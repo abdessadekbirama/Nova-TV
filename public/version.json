@@ -1,5 +1,5 @@
 {
   "version": "1.0.0",
-  "build": 1,
-  "androidUrl": "https://github.com/abdessadekbirama/Nova-TV"
+  "androidUrl": "https://nova-tv-six.vercel.app/",
+  "forceUpdate": false
 }
