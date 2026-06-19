@@ -1,5 +1,5 @@
 {
   "version": "1.0.0",
   "androidUrl": "https://nova-tv-six.vercel.app/",
-  "forceUpdate": false
+  "minimumVersion": "1.0.0"
 }
