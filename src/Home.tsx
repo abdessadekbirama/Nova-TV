@@ -1,11 +1,6 @@
-import { useEffect, useState } from "react";
 import logo from "../public/logo.jpeg";
-export default function Home() {
-    const [mounted, setMounted] = useState(false);
 
-    useEffect(() => {
-        setMounted(true);
-    }, []);
+export default function Home() {
     return (
         <div className="relative min-h-screen bg-[#070709] overflow-hidden flex flex-col items-center justify-center font-sans">
             {/* ── Ambient background ── */}
@@ -31,32 +26,26 @@ export default function Home() {
             <header className="absolute top-0 inset-x-0 flex items-center justify-between px-8 py-6 z-10">
                 <div className="flex items-center gap-2 select-none"></div>
                 <nav className="hidden sm:flex items-center gap-8 text-xs font-semibold tracking-widest text-white/40 uppercase">
-                    <a
-                        href="#"
-                        className="hover:text-white/80 transition-colors duration-200"
-                    >
-                        Features
-                    </a>
-                    <a
-                        href="#"
-                        className="hover:text-white/80 transition-colors duration-200"
-                    >
-                        Pricing
-                    </a>
-                    <a
-                        href="#"
-                        className="hover:text-white/80 transition-colors duration-200"
-                    >
-                        Support
-                    </a>
+                    <a href="#" className="hover:text-white/80 transition-colors duration-200">Features</a>
+                    <a href="#" className="hover:text-white/80 transition-colors duration-200">Pricing</a>
+                    <a href="#" className="hover:text-white/80 transition-colors duration-200">Support</a>
                 </nav>
             </header>
 
             {/* ── Hero ── */}
             <main
-                className={`relative z-10 flex flex-col items-center text-center px-6 transition-all duration-1000 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                    }`}
+                className="relative z-10 flex flex-col items-center text-center px-6 animate-[fadeInUp_1s_ease_forwards]"
+                style={{
+                    animationFillMode: "both",
+                }}
             >
+                <style>{`
+                    @keyframes fadeInUp {
+                        from { opacity: 0; transform: translateY(2rem); }
+                        to   { opacity: 1; transform: translateY(0); }
+                    }
+                `}</style>
+
                 {/* badge */}
                 <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 backdrop-blur-sm">
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -118,89 +107,30 @@ export default function Home() {
                         {/* shimmer sweep */}
                         <span className="absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out" />
                         {/* icon */}
-                        <svg
-                            className="h-5 w-5 flex-shrink-0"
-                            viewBox="0 0 24 24"
-                            fill="currentColor"
-                        >
+                        <svg className="h-5 w-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M3.18 23.76c.34.19.73.19 1.07 0L20.8 14.38c.35-.2.55-.56.55-.96s-.2-.76-.55-.96L4.25.07C3.91-.12 3.52-.12 3.18.07 2.83.26 2.63.62 2.63 1.02v21.96c0 .4.2.76.55.78z" />
                         </svg>
                         Download for Android
                     </button>
-                    {/* Primary download */}
-                    {/* <button
-            className="
-              group relative overflow-hidden
-              flex items-center gap-3
-              rounded-2xl px-9 py-5
-              text-base font-bold tracking-wide text-white
-              bg-gradient-to-r from-blue-500 via-violet-600 to-fuchsia-500
-              shadow-[0_0_40px_rgba(139,92,246,0.5)]
-              transition-all duration-300
-              hover:scale-105 hover:shadow-[0_0_64px_rgba(139,92,246,0.75)]
-              active:scale-95
-            "
-          >
-            <span className="absolute inset-0 translate-x-[-100%] bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out" />
-            <svg
-              className="h-5 w-5 flex-shrink-0"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.42c1.42.07 2.41.74 3.24.8 1.23-.24 2.41-.93 3.72-.84 1.57.12 2.75.72 3.53 1.84-3.24 1.94-2.71 6.17.51 7.36-.61 1.61-1.42 3.19-3 3.7M12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
-            </svg>
-            Download on App Store
-          </button> */}
-
-                    {/* <button
-            className="
-              group
-              flex items-center gap-3
-              rounded-2xl px-9 py-5
-              text-base font-bold tracking-wide text-white/70
-              border border-white/10 bg-white/5
-              backdrop-blur-sm
-              transition-all duration-300
-              hover:scale-105 hover:border-white/25 hover:text-white hover:bg-white/10
-              active:scale-95
-            "
-          >
-            <svg
-              className="h-5 w-5 flex-shrink-0"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M3.18 23.76c.34.19.73.19 1.07 0L20.8 14.38c.35-.2.55-.56.55-.96s-.2-.76-.55-.96L4.25.07C3.91-.12 3.52-.12 3.18.07 2.83.26 2.63.62 2.63 1.02v21.96c0 .4.2.76.55.78z" />
-            </svg>
-            Get it on Google Play
-          </button> */}
                 </div>
 
                 {/* social proof */}
                 <div className="mt-14 flex items-center gap-6 text-white/30">
                     <div className="text-center">
                         <p className="text-2xl font-black text-white/70">4.9</p>
-                        <p className="text-[11px] tracking-widest uppercase mt-0.5">
-                            Rating
-                        </p>
+                        <p className="text-[11px] tracking-widest uppercase mt-0.5">Rating</p>
                     </div>
                     <div className="h-8 w-px bg-white/10" />
                     <div className="text-center">
                         <p className="text-2xl font-black text-white/70">2M+</p>
-                        <p className="text-[11px] tracking-widest uppercase mt-0.5">
-                            Downloads
-                        </p>
+                        <p className="text-[11px] tracking-widest uppercase mt-0.5">Downloads</p>
                     </div>
                     <div className="h-8 w-px bg-white/10" />
                     <div className="text-center">
                         <p className="text-2xl font-black text-white/70">500+</p>
-                        <p className="text-[11px] tracking-widest uppercase mt-0.5">
-                            Channels
-                        </p>
+                        <p className="text-[11px] tracking-widest uppercase mt-0.5">Channels</p>
                     </div>
                 </div>
-
-
             </main>
 
             {/* ── Footer ── */}
@@ -210,5 +140,5 @@ export default function Home() {
                 </p>
             </footer>
         </div>
-    )
+    );
 }
